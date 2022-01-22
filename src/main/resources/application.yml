@@ -8,7 +8,7 @@ spring:
   datasource:
     hikari:
       driver-class-name: org.h2.Driver
-      jdbc-url: jdbc:h2:tcp://localhost:9092/mem:testdb
+      jdbc-url: jdbc:h2:tcp://localhost:9092/mem:testdb;MODE=MYSQL
       username: test
       password: test
   jpa:
@@ -19,6 +19,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   config:
     activate:
       on-profile:
