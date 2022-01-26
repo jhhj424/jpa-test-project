@@ -23,33 +23,33 @@ public class AroundOperationController {
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-
-    @GetMapping("/api/search/around/operations/{id}")
-    public ResponseEntity<SearchAroundOperationResponse> find(@PathVariable Long id) {
-        return ResponseEntity.ok(aroundOperationService.find(id));
-    }
+//
+//    @GetMapping("/api/search/around/operations/{id}")
+//    public ResponseEntity<SearchAroundOperationResponse> find(@PathVariable Long id) {
+//        return ResponseEntity.ok(aroundOperationService.find(id));
+//    }
 
     @GetMapping("/api/search/around/operations")
     public ResponseEntity<List<SearchAroundOperationResponse>> findAll(@RequestParam("operationBoardType") OperationBoardType operationBoardType) {
         return ResponseEntity.ok(aroundOperationService.findAll(operationBoardType));
     }
 
-    @PutMapping("/api/search/around/operations/{id}")
-    public ResponseEntity update(@PathVariable Long id, @RequestBody AroundOperationRequest searchAroundTabRequest) throws ServletException, IOException {
-        aroundOperationService.update(id, searchAroundTabRequest);
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/api/search/around/operations/display-orders")
-    public ResponseEntity update(@RequestBody AroundOperationOrderRequest requests) {
-        aroundOperationService.updateOperationOrder(requests);
-        return ResponseEntity.ok().build();
-    }
-
-    @DeleteMapping("/api/search/around/operations/{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
-        aroundOperationService.delete(id);
-
-        return ResponseEntity.noContent().build();
-    }
+//    @PutMapping("/api/search/around/operations/{id}")
+//    public ResponseEntity update(@PathVariable Long id, @RequestBody AroundOperationRequest searchAroundTabRequest) throws ServletException, IOException {
+//        aroundOperationService.update(id, searchAroundTabRequest);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @PutMapping("/api/search/around/operations/display-orders")
+//    public ResponseEntity update(@RequestBody AroundOperationOrderRequest requests) {
+//        aroundOperationService.updateOperationOrder(requests);
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @DeleteMapping("/api/search/around/operations/{id}")
+//    public ResponseEntity delete(@PathVariable Long id) {
+//        aroundOperationService.delete(id);
+//
+//        return ResponseEntity.noContent().build();
+//    }
 }

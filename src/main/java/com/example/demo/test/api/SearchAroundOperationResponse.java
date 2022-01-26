@@ -1,7 +1,6 @@
 package com.example.demo.test.api;
 
 import com.example.demo.test.domain.around.operation.OperationBoard;
-import com.example.demo.test.domain.around.operation.OperationBoardMap;
 import com.example.demo.test.domain.around.operation.OperationBoardType;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,7 +28,7 @@ public class SearchAroundOperationResponse {
 
     private String code;
 
-    private List<OperationBoardMap> operationBoardMaps;
+//    private List<OperationBoardMap> operationBoardMaps;
 
     public static SearchAroundOperationResponse from(OperationBoard operationBoard) {
 
@@ -42,7 +41,7 @@ public class SearchAroundOperationResponse {
                 .endDateTime(operationBoard.getEndDateTime())
                 .displayOrder(operationBoard.getDisplayOrder())
                 .code(operationBoard.getCode())
-                .operationBoardMaps(operationBoard.getOperationBoardMaps())
+//                .operationBoardMaps(operationBoard.getOperationBoardMaps())
                 .build();
     }
 }

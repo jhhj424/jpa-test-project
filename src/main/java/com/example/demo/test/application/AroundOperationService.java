@@ -21,9 +21,9 @@ public class AroundOperationService {
 
     private final OperationBoardRepository operationBoardRepository;
 
-    public SearchAroundOperationResponse find(Long id) {
-        return SearchAroundOperationResponse.from(getOperationBoard(id));
-    }
+//    public SearchAroundOperationResponse find(Long id) {
+//        return SearchAroundOperationResponse.from(getOperationBoard(id));
+//    }
 
     public List<SearchAroundOperationResponse> findAll(OperationBoardType operationBoardType) {
         return operationBoardRepository.findByTypeAndActiveTrue(operationBoardType)
@@ -35,42 +35,41 @@ public class AroundOperationService {
     @Transactional
     public void create(AroundOperationRequest aroundOperationRequest) throws ServletException, IOException {
 //        List<Long> ids = excelOperationBoardFile.getIdsFromFile(request);
-        List<Long> ids = List.of(1L,2L,3L);
+        List<Long> ids = List.of(1L, 2L, 3L);
 
-        List<OperationBoardMap> operationBoardMaps = OperationBoardMapFactory.create(ids, aroundOperationRequest.getType());
-        OperationBoard operationBoard = aroundOperationRequest.toEntity(operationBoardMaps);
+        OperationBoard operationBoard = OperationBoardFactory.create(ids, aroundOperationRequest);
 
         operationBoardRepository.save(operationBoard);
     }
-
-    @Transactional
-    public void update(Long id, AroundOperationRequest aroundOperationRequest) throws ServletException, IOException {
-//        List<Long> ids = excelOperationBoardFile.getIdsFromFile(request);
-        List<Long> ids = List.of(4L,5L,6L);
-
-        List<OperationBoardMap> operationBoardMaps = OperationBoardMapFactory.create(ids, aroundOperationRequest.getType());
-        OperationBoard operationBoard = aroundOperationRequest.toEntity(operationBoardMaps);
-
-        getOperationBoard(id).update(operationBoard);
-    }
-
-    @Transactional
-    public void updateOperationOrder(AroundOperationOrderRequest request) {
-        request.getOperationOrders()
-                .forEach(operationOrder -> {
-                    getOperationBoard(operationOrder.getId()).updateDisplayOrder(operationOrder.getDisplayOrder());
-                });
-    }
-
-    @Transactional
-    public void delete(Long id) {
-        OperationBoard operationBoard = getOperationBoard(id);
-
-        operationBoard.updateActiveFalse();
-    }
-
-    private OperationBoard getOperationBoard(Long id) {
-        return operationBoardRepository.findByIdAndActiveTrue(id)
-                .orElseThrow(IllegalArgumentException::new);
-    }
+//
+//    @Transactional
+//    public void update(Long id, AroundOperationRequest aroundOperationRequest) throws ServletException, IOException {
+////        List<Long> ids = excelOperationBoardFile.getIdsFromFile(request);
+//        List<Long> ids = List.of(4L, 5L, 6L);
+//
+//        List<OperationBoardMap> operationBoardMaps = OperationBoardMapFactory.create(ids, aroundOperationRequest.getType());
+//        OperationBoard operationBoard = aroundOperationRequest.toEntity(operationBoardMaps);
+//
+//        getOperationBoard(id).update(operationBoard);
+//    }
+//
+//    @Transactional
+//    public void updateOperationOrder(AroundOperationOrderRequest request) {
+//        request.getOperationOrders()
+//                .forEach(operationOrder -> {
+//                    getOperationBoard(operationOrder.getId()).updateDisplayOrder(operationOrder.getDisplayOrder());
+//                });
+//    }
+//
+//    @Transactional
+//    public void delete(Long id) {
+//        OperationBoard operationBoard = getOperationBoard(id);
+//
+//        operationBoard.updateActiveFalse();
+//    }
+//
+//    private OperationBoard getOperationBoard(Long id) {
+//        return operationBoardRepository.findByIdAndActiveTrue(id)
+//                .orElseThrow(IllegalArgumentException::new);
+//    }
 }
