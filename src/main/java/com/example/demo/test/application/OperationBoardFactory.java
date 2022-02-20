@@ -27,16 +27,16 @@ public class OperationBoardFactory {
                     .shops(shops)
                     .build();
         }
-//        if (aroundOperationRequest.getType() == NAIL_SHOP) {
-//            return ids.stream()
-//                    .map(OperationBoardNailShopMap::new)
-//                    .collect(Collectors.toList());
-//        }
-//        if (aroundOperationRequest.getType() == STYLER) {
-//            return ids.stream()
-//                    .map(OperationBoardStylerMap::new)
-//                    .collect(Collectors.toList());
-//        }
+        if (aroundOperationRequest.getType() == NAIL_SHOP) {
+            return ids.stream()
+                    .map(OperationBoardNailShopMap::new)
+                    .collect(Collectors.toList());
+        }
+        if (aroundOperationRequest.getType() == STYLER) {
+            return ids.stream()
+                    .map(OperationBoardStylerMap::new)
+                    .collect(Collectors.toList());
+        }
         throw new IllegalArgumentException();
     }
 }
