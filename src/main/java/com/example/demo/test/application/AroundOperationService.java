@@ -21,9 +21,9 @@ public class AroundOperationService {
 
     private final OperationBoardRepository operationBoardRepository;
 
-//    public SearchAroundOperationResponse find(Long id) {
-//        return SearchAroundOperationResponse.from(getOperationBoard(id));
-//    }
+    public SearchAroundOperationResponse find(Long id) {
+        return SearchAroundOperationResponse.from(getOperationBoard(id));
+    }
 
     public List<SearchAroundOperationResponse> findAll(OperationBoardType operationBoardType) {
         return operationBoardRepository.findByTypeAndActiveTrue(operationBoardType)
@@ -41,7 +41,7 @@ public class AroundOperationService {
 
         operationBoardRepository.save(operationBoard);
     }
-//
+
 //    @Transactional
 //    public void update(Long id, AroundOperationRequest aroundOperationRequest) throws ServletException, IOException {
 ////        List<Long> ids = excelOperationBoardFile.getIdsFromFile(request);
@@ -52,24 +52,24 @@ public class AroundOperationService {
 //
 //        getOperationBoard(id).update(operationBoard);
 //    }
-//
-//    @Transactional
-//    public void updateOperationOrder(AroundOperationOrderRequest request) {
-//        request.getOperationOrders()
-//                .forEach(operationOrder -> {
-//                    getOperationBoard(operationOrder.getId()).updateDisplayOrder(operationOrder.getDisplayOrder());
-//                });
-//    }
-//
-//    @Transactional
-//    public void delete(Long id) {
-//        OperationBoard operationBoard = getOperationBoard(id);
-//
-//        operationBoard.updateActiveFalse();
-//    }
-//
-//    private OperationBoard getOperationBoard(Long id) {
-//        return operationBoardRepository.findByIdAndActiveTrue(id)
-//                .orElseThrow(IllegalArgumentException::new);
-//    }
+
+    @Transactional
+    public void updateOperationOrder(AroundOperationOrderRequest request) {
+        request.getOperationOrders()
+                .forEach(operationOrder -> {
+                    getOperationBoard(operationOrder.getId()).updateDisplayOrder(operationOrder.getDisplayOrder());
+                });
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        OperationBoard operationBoard = getOperationBoard(id);
+
+        operationBoard.updateActiveFalse();
+    }
+
+    private OperationBoard getOperationBoard(Long id) {
+        return operationBoardRepository.findByIdAndActiveTrue(id)
+                .orElseThrow(IllegalArgumentException::new);
+    }
 }

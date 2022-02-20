@@ -39,4 +39,11 @@ public abstract class OperationBoard {
     @Column(nullable = false)
     private String code;
 
+    public void updateDisplayOrder(int displayOrder) {
+        this.displayOrder = displayOrder;
+    }
+
+    public void updateActiveFalse() {
+        this.active = false;
+    }
 }

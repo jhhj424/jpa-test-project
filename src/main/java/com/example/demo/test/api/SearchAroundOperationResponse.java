@@ -28,8 +28,6 @@ public class SearchAroundOperationResponse {
 
     private String code;
 
-//    private List<OperationBoardMap> operationBoardMaps;
-
     public static SearchAroundOperationResponse from(OperationBoard operationBoard) {
 
         return SearchAroundOperationResponse.builder()
@@ -41,7 +39,6 @@ public class SearchAroundOperationResponse {
                 .endDateTime(operationBoard.getEndDateTime())
                 .displayOrder(operationBoard.getDisplayOrder())
                 .code(operationBoard.getCode())
-//                .operationBoardMaps(operationBoard.getOperationBoardMaps())
                 .build();
     }
 }
